@@ -33,7 +33,7 @@ def save_to_google_sheet(data):
         sheet = client.open("Predictions Data").sheet1
 
         # Get the current date and time
-        now = datetime.now()
+        now = datetime.now(pytz.timezone("Asia/Colombo"))
         current_time = now.strftime("%Y-%m-%d %H:%M:%S")  # Format: YYYY-MM-DD HH:MM:SS
 
         # Append the data with the timestamp
