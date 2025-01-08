@@ -16,8 +16,11 @@ def save_to_google_sheet(data):
         # Load the service account key from Streamlit secrets
         service_account_info = json.loads(st.secrets["google"]["GOOGLE_CLOUD_KEY"])
 
-        # Specify required scopes for Google Sheets API
-        scopes = ["https://www.googleapis.com/auth/spreadsheets"]
+        # Specify required scopes
+        scopes = [
+            "https://www.googleapis.com/auth/spreadsheets",
+            "https://www.googleapis.com/auth/drive"
+        ]
 
         # Create credentials with scopes
         credentials = Credentials.from_service_account_info(service_account_info, scopes=scopes)
@@ -38,8 +41,11 @@ def save_to_google_sheet(data):
 
     except gspread.SpreadsheetNotFound:
         st.error("The specified Google Sheet 'Predictions Data' could not be found. Please ensure it exists and is shared with the service account email.")
+    except gspread.exceptions.APIError as e:
+        st.error(f"An error occurred while saving to Google Sheets: {e}")
     except Exception as e:
-        st.error(f"An error occurred while saving to Google Sheets: {str(e)}")
+        st.error(f"An unexpected error occurred: {str(e)}")
+
 
 # Streamlit UI
 st.markdown(
