@@ -4,6 +4,7 @@ import pickle
 import json
 from datetime import datetime
 from google.oauth2.service_account import Credentials
+import pytz
 
 # Load the trained models
 electricity_model = pickle.load(open('Consumptions/electricity_pkl.sav', 'rb'))
