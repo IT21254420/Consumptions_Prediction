@@ -50,7 +50,7 @@ def save_to_google_sheet(data):
 
 # Streamlit UI
 st.markdown(
-    "<div style='text-align: center; font-size: 46px; font-weight: bold;'>Utility Consumption Prediction Model</div>",
+    "<div style='text-align: center; font-size: 46px; font-weight: bold;'>Utility Consumption Prediction Modelll</div>",
     unsafe_allow_html=True
 )
 st.write("")
